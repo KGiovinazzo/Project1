@@ -20,25 +20,74 @@
     <div class="container">
         <form>
             <div class="row">
-            <div class="form-group col-6 text-center">
-                <label for="songTitle">Title</label>
-                <input type="name" class="form-control text-center" id="songTitle"
-                    placeholder="Enter song title">
+                <div class="form-group col-6 text-center">
+                    <label for="songTitle">Song Title</label>
+                    <input type="name" class="form-control text-center" id="songTitle" placeholder="Enter song title">
+                </div>
+                <div class="form-group col text-center">
+                    <label for="artists">Artist</label>
+                    <input type="password" class="form-control text-center" id="artist" placeholder="Artist">
+                </div>
+                <div class="form-group col text-center">
+                    <label for="exampleInputEmail1">Album</label>
+                    <input type="album" class="form-control text-center" id="album" placeholder="Album">
+                </div>
             </div>
-            <div class="form-group col text-center">
-                <label for="artists">Artist</label>
-                <input type="password" class="form-control text-center" id="artist" placeholder="Artist">
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-primary w-25">Submit</button>
             </div>
-            <div class="form-group col text-center">
-                <label for="exampleInputEmail1">Album</label>
-                <input type="album" class="form-control text-center" id="album" placeholder="Album">
-            </div>
-            </div>
-            <div class="row justify-content-center">            
-            <button type="submit" class="btn btn-primary w-25">Submit</button>
-            </div>
-        
         </form>
+        <div class="row">
+            <div class="card m-3" style="min-width: 720px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="..." class="card-img" alt="album picture here">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Song title</h5>
+                            <p class="card-text">
+                                artist
+                                album</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="media col-sm m-3">
+                <img src="..." class="mr-3" alt="...">
+                <div class="media-body">
+                    <h5 class="mt-0">Show Listing</h5>
+                    listing info
+                    listing link
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="card-deck">
+                <div class="card col">
+                    <img src="..." class="card-img-top" alt="band/album pic">
+                    <div class="card-body">
+                        <h5 class="card-title">Similar Band 1</h5>
+                        <p class="card-text">Info about similar band.</p>
+                    </div>
+                </div>
+                <div class="card col">
+                    <img src="..." class="card-img-top" alt="band/album pic">
+                    <div class="card-body">
+                        <h5 class="card-title">Similar Band 2</h5>
+                        <p class="card-text">info about similar band.</p>
+                    </div>
+                </div>
+                <div class="card col">
+                    <img src="..." class="card-img-top" alt="band/album pic">
+                    <div class="card-body">
+                        <h5 class="card-title">Similar Band 3</h5>
+                        <p class="card-text">info about similar band.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
