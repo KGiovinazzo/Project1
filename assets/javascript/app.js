@@ -10,4 +10,4 @@ $(".btn-submit").on("click", function(event){
     console.log(`Song title: ${songTitle}
         Artist: ${artist}
         Album: ${album}`);
-})
+});
