@@ -61,7 +61,7 @@ function configureSpotify(token){
         spotifyApi = new SpotifyWebApi();
         console.log(spotifyApi);
         //token goes here
-        spotifyApi.setAccessToken("BQBcYS-E2-ce6qSORz3v-a9Vh3JRwQb73aCHTsZIQDnU64gprfI_zUS-lyli9YSeMEVaVpuPIU0WGjugmpji_ip7ox3JMvzGkDySN4Dpt3O352Xs7wVjKPXqxB91SlmXQRXDIOw5pIkSZOLV8ZFCWicipOOHnixx9IuIaRtNQQ03UO7B6WXswUaAVYfda0Ay0AATLMFusJA0iXaj41YSf5FMtMOJija8OF13OQJD33yaz9ILeo8AXHe2PLZVhtOqH1b6kTPJvh6-");
+        spotifyApi.setAccessToken("BQBqRGvYPaRGONyC8hYvalgZRwNspCeoq3B3gO91XTDTt52ET7CYek6qjcCgOhxm50VXrUtj64Io_WPQQ2oct7ofc3lxgVGbvdq5pxyZNeoHtMQY2QXKlAV2bSHd_Jt0N22UGGBUpst1Ad3y4bsh3_AmJIxHqU8MbNGyByJQQzGkHrvvmE7-IMUk5RJEFjMZUDYlZ9u6mVVl-5sxiEdpjKaXB2FCJDhcyPOLNOAaSZTN5biJjOI6k2F7YF4AgDjb89Ti4OqIgGg5uf-vPO917gjHTZ4jJo3F");
         // spotifyApi.setPromiseImplementation(Q);
         // get Elvis' albums, passing a callback. When a callback is passed, no Promise is returned
         spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', function(err, data) {
