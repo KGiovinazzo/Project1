@@ -14,6 +14,7 @@ $(".btn-submit").on("click", function(event){
     if (songTitle != "" && artist != ""){
         //empty the previous results 
         $("#songTitleDisplay, #artistDisplay, #albumDisplay").empty();
+        $("#similarArtist").empty();
         //display a filler is the song doesnt have a picture
         $("#albumPic").attr("src", "http://lorempixel.com/200/200/technics");
         //function to call the track
