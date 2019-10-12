@@ -1,0 +1,10 @@
+#header {
+    background-color: black;
+    height: 50px;
+}
+
+#imghead {
+    height: 200px;
+    flex: shrink;
+}
+
