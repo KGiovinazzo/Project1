@@ -7,42 +7,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Project One</title>
 </head>
+<style>
+    body {
+        background-image: url("assets/css/lavaimg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 
 <body>
 
-    <div class="jumbotron jumbotron-fluid text-center">
-        <h2>Speaker Freaks?</h2>
+    <div class="jumbotron jumbotron-fluid text-center" id="header">
+        <!-- <div class="row"> -->
+            <img src="assets/css/Speaker Freaks.png" id="imghead" class="mt-n5">
+        <!-- </div> -->
     </div>
 
     <div class="container">
         <form>
             <div class="row">
                 <div class="form-group col-6 text-center">
-                    <label for="songTitle">Song Title</label>
                     <input type="name" class="form-control text-center" id="songTitle" placeholder="Enter song title">
                 </div>
                 <div class="form-group col text-center">
-                    <label for="artists">Artist</label>
                     <input type="text" class="form-control text-center" id="artist" placeholder="Artist">
                 </div>
                 <div class="form-group col text-center">
-                    <label for="exampleInputEmail1">Album</label>
                     <input type="text" class="form-control text-center" id="album" placeholder="Album">
                 </div>
             </div>
             <div class="row justify-content-center">
-                <button type="submit" class="btn btn-primary w-25 btn-submit">Submit</button>
+                <button type="submit" class="btn btn-primary w-25 btn-submit" id="sub">Submit</button>
             </div>
         </form>
 
         <div class="jumbotron mt-5" id="displayArea">
         </div>
-
-
-        
     </div>
 
 
@@ -53,7 +56,7 @@
     <script src="assets/javascript/lyric.js"></script>
     <script src="assets/javascript/event.js"></script>
 
-    
+
 </body>
 
 </html>

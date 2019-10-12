@@ -36,13 +36,13 @@ function getTrackInfo(songTitle, artist) {
         console.log(response);
 
         var displayTrack = `<div class="row justify-content-center">
-            <div class="card m-3 col flex-md-fill">
+            <div id = "display" class="card m-3 col flex-md-fill">
                 <div class="row no-gutters">
                     <div class="col">
                         <img src="${response.track.album.image[3]["#text"]}" class="card-img my-3">
                     </div>
                     <div class="col align-self-center">
-                        <div class="card-body">
+                        <div class="card-body ml-3" id="cardCol">
                             <h5 class="card-title text-center m-3">${response.track.name}</h5>
                             <p class="card-text text-center">${response.track.artist.name}</p>
                             <p class="card-text text-center">${response.track.album.title}</p>
@@ -74,9 +74,9 @@ function getSimilarArtist(artist){
         console.log(response);
 
         for (i = 0; i < 3; i++) {
-            var similarArtistCard = `<div class="card col">
+            var similarArtistCard = `<div class="card col" id= "cardCenter">
             <img src="${response.similarartists.artist[i].image[1]["#text"]}" class="card-img-top my-3">
-            <div class="card-body">
+            <div class="card-body" id="cardBody">
                 <h5 class="card-title text-center">${response.similarartists.artist[i].name}</h5>
                 <p class="card-text" id="similarArtist1Info"></p>
             </div>
