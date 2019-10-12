@@ -6,12 +6,17 @@ function gifSearch()
 // Api key - 13cdf1d052803672f7fd64d4de39086c
 
 // Ajax
-	$.ajax(
-			
-{
-	url: queryURL,
-	method: "GET"
-}).done(function (response) 
+function lyricAjax(){
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).then(function(response){
+	console.log(response);
+
+}); 
+
+}
+
 
 {
 	var results = response.data;
@@ -28,5 +33,5 @@ function gifSearch()
 			$("#lyrics").append(gifDiv);
 		}
 
-	});
+	};
 };
