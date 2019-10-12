@@ -16,30 +16,19 @@ $(".btn-submit").on("click", function(event)
 	console.log(artist);
 	console.log(album);
 })
-
+ 
 // Ajax
-	$.ajax(	
+function trackLyrics(songTitle, artist)
 {
+	trackLyrcisQueryURL = "track.lyrics.get?track_id=15953433" + "album.tracks.get?album_id=13750844&page=1&page_size=2"
+
+	$.ajax(	{
 	url: queryURL,
 	method: "GET",
 	dataType: "jsonp"
+	
 
 }).then(function (response){
 console.log(response);
-
-function titleSearch()
-
-	var titleSearch
-
-
-
-
-})
-
-
-
-
-
-
-
-	
+});
+}
