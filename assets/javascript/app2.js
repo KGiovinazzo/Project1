@@ -81,8 +81,7 @@ function getSimilarArtist(artist){
                 <p class="card-text" id="similarArtist1Info"></p>
             </div>
         </div>`;
-
-            
+ 
         $("#similarArtist").append(similarArtistCard);
         
         };
