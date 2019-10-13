@@ -20,34 +20,53 @@ $(".btn-submit").on("click", function(event){
     } else if(artist != "" && album != ""){
         //function to pull up album info
         getAlbumInfo(artist, album);
+    } else if(artist != ""){
+        //function to generate buttons for artist only input
+        artistInputButtons();
     };
 
 });
 //click event for artist info button
-$("#artistInfoBtn").on("click", function(event){
-    console.log(artist);
-
+$(document).on("click", "#artistInfoBtn", function(event){
+    console.log("clicked");
     $("#displayArea").empty();
 
     getArtistInfo(artist);
 });
 //click event for similar artists button
-$("#similarArtistBtn").on("click", function(event){
-    console.log(artist);
+$(document).on("click", "#similarArtistBtn", function(event){
 
     $("#displayArea").empty();
     $("#displayArea").html(`<div class="row d-flex justify-content-around" id="displaySimilarArtist"></div>`);
 
     getSimilarArtist(artist);
 });
-//click event for top albums
-$("#topAlbumsBtn").on("click", function(event){
-    console.log(artist);
+//click event for artist top albums
+$(document).on("click", "#topAlbumsBtn", function(event){
 
     $("#displayArea").empty();
 
     getTopAlbums(artist);
 });
+//click event for artist top tracks
+$(document).on("click", "#topTracksBtn", function(event){
+    console.log(artist);
+
+    $("#displayArea").empty();
+
+    getTopTracks(artist);
+});
+
+//function to generate button when only artist is input
+function artistInputButtons(){
+    var artistButtonSet = `<button type="button" class="btn btn-primary" id="artistInfoBtn">Artist Info</button>
+    <button type="button" class="btn btn-primary" id="similarArtistBtn">Similar Artists</button>
+    <button type="button" class="btn btn-primary" id="topAlbumsBtn">Top Albums</button>
+    <button type="button" class="btn btn-primary"
+    id="topTracksBtn">Top Tracks</button>`;
+
+    $("#buttonRow").html(artistButtonSet);
+}
 
 //Last.FM API call put into functions
 //function to pull up track info
@@ -168,7 +187,7 @@ function getTopAlbums(artist){
                         <a href="${response.topalbums.album[i].url}">Learn more</a>
                     </div>
                 </div>
-            </div>`
+            </div>`;
 
             $("#topAlbums").append(eachAlbumCard);
         };
@@ -176,6 +195,58 @@ function getTopAlbums(artist){
     });
 
 };
+
+//function get top tracks
+function getTopTracks(artist){
+
+    var topTrackQueryURL = `${queryURL}?method=artist.gettoptracks&artist=${artist}&api_key=${apiKey}&format=json`;
+
+    $.ajax({
+        url: topTrackQueryURL,
+        method: "GET",
+        dataType: "jsonp"
+    }).then(function(response){
+        console.log(response);
+
+        var topTrackCard = `<div class="card flex-fill">
+            <h5 class="card-header text-center">${response.toptracks["@attr"].artist}</h5>
+            <div class="card-body">
+            <div class="row" id="topTracks"></div>
+            </div>
+        </div>`;
+
+        $("#displayArea").html(topTrackCard);
+
+        for(i = 0; i < 6; i++){
+            var eachTrackCard = `<div class="col-sm">
+                <div class="card m-3">
+                    <h5 class="card-header text-center">${i + 1}</h5>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${response.toptracks.track[i].name}</h5>
+                        <a href="${response.toptracks.track[i].url}">Learn more</a>
+                    </div>
+                </div>
+            </div>`;
+
+            $("#topTracks").append(eachTrackCard);
+        };
+
+    });
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function getAlbumInfo(artist, album){
     
