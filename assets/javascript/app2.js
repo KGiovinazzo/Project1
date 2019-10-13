@@ -26,18 +26,31 @@ $(".btn-submit").on("click", function(event){
 //click event for artist info button
 $("#artistInfo").on("click", function(event){
     console.log(artist);
+
     $("#displayArea").empty();
+
     getArtistInfo(artist);
 });
 //click event for similar artists button
 $("#similarArtist").on("click", function(event){
     console.log(artist);
+
     $("#displayArea").empty();
     $("#displayArea").html(`<div class="row d-flex justify-content-around" id="displaySimilarArtist"></div>`);
+
     getSimilarArtist(artist);
+});
+//click event for top albums
+$("#topAlbums").on("click", function(event){
+    console.log(artist);
+
+    $("#displayArea").empty();
+
+    getTopAlbums(artist);
 });
 
 //Last.FM API call put into functions
+//function to pull up track info
 function getTrackInfo(songTitle, artist) {
 
     var trackQueryURL = `${queryURL}?method=track.getInfo&api_key=${apiKey}&artist=${artist}&track=${songTitle}&format=json`;
@@ -70,7 +83,32 @@ function getTrackInfo(songTitle, artist) {
     });
 
 };
+//function to get artist info
+function getArtistInfo(artist){
 
+    var artistQueryURL = `${queryURL}?method=artist.getinfo&artist=${artist}&api_key=${apiKey}&format=json`;
+
+    $.ajax({
+        url: artistQueryURL,
+        method: "GET",
+        dataType: "jsonp"
+    }).then(function(response){
+        console.log(response);
+        
+        var artistDisplay = `<div class="card m-5">
+            <div class="card-header text-center">Summary</div>
+            <div class="card-body">
+                <h5 class="card-title text-center m-3">${response.artist.name}</h5>
+                <p class="card-text m-5">${response.artist.bio.summary}</p>
+            </div>
+        </div>`;
+
+        $("#displayArea").html(artistDisplay);
+
+    });
+
+};
+//function to get similar artist info
 function getSimilarArtist(artist){
 
     var similarArtistQueryURL = `${queryURL}?method=artist.getsimilar&artist=${artist}&api_key=${apiKey}&format=json`;
@@ -100,6 +138,29 @@ function getSimilarArtist(artist){
     });
 
 };
+//function to grab top albums
+function getTopAlbums(artist){
+    var topAlbumQueryURL = `${queryURL}?method=artist.gettopalbums&artist=${artist}&api_key=${apiKey}&format=json`;
+
+    $.ajax({
+        url: topAlbumQueryURL,
+        method: "GET",
+        dataType: "jsonp"
+    }).then(function(response){
+        console.log(response);
+        console.log(response.topalbums["@attr"].artist);
+        
+        var topAlbumCard = `<div class="card">
+            <h5 class="card-header">${response.topalbums["@attr"].artist}</h5>
+            <div class="card-body">
+            </div>
+        </div>`
+
+        $("#displayArea").html(topAlbumCard);
+
+    });
+
+};
 
 function getAlbumInfo(artist, album){
     
@@ -116,30 +177,7 @@ function getAlbumInfo(artist, album){
 
 };
 
-function getArtistInfo(artist){
 
-    var artistQueryURL = `${queryURL}?method=artist.getinfo&artist=${artist}&api_key=${apiKey}&format=json`;
-
-    $.ajax({
-        url: artistQueryURL,
-        method: "GET",
-        dataType: "jsonp"
-    }).then(function(response){
-        console.log(response);
-        
-        var artistDisplay = `<div class="card m-5">
-            <div class="card-header text-center">Summary</div>
-            <div class="card-body">
-                <h5 class="card-title text-center m-3">${response.artist.name}</h5>
-                <p class="card-text m-5">${response.artist.bio.summary}</p>
-            </div>
-        </div>`;
-
-        $("#displayArea").html(artistDisplay);
-
-    });
-
-};
 
 function getSimilarTrack(songTitle, artist){
 
