@@ -1,7 +1,7 @@
 // Lyric API
-//using happi.dev api
-var apiKey = "b3c073EQe0nYLX6By9t27c43gCztx0VHHSAOkOXXyDlA7l4mbJ9vnkqC";
-var queryURL = "https://api.happi.dev/v1/music";
+//musixmatch.dev api
+var musixMatchApiKey = "13cdf1d052803672f7fd64d4de39086c";
+var musixMatchQueryURL = "https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/";
 var songTitle;
 var artist;
 var album;
@@ -18,19 +18,22 @@ $(".btn-submit").on("click", function(event){
 	console.log(artist);
 	console.log(album);
 
-	findTrack(songTitle);
+	findArtist(artist);
 });
 
 //function to search track through musixmatch
-function findTrack(songTitle){
+function findArtist(artist){
 
-	var findTrackQueryURL = `${queryURL}?q=${songTitle}&apikey=${apiKey}`;
+	var findArtistQueryURL = `${musixMatchQueryURL}artist.search?q_artist=${artist}&apikey=${musixMatchApiKey}`;
 
 	$.ajax({
-		url: findTrackQueryURL,
+		url: findArtistQueryURL,
 		method: "GET",
 	}).then(function(response){
 	console.log(response);
 	
 	});
 };
+
+// var apiKey = "13cdf1d052803672f7fd64d4de39086c";
+// var queryURL = "https://api.musixmatch.com/ws/1.1/"

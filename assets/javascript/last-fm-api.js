@@ -1,6 +1,6 @@
 //last.FM API info
-var apiKey = "a9934be7d65f534ea8c336db02853748";
-var queryURL = "https://ws.audioscrobbler.com/2.0/";
+var lastFmApiKey = "a9934be7d65f534ea8c336db02853748";
+var lastFmQueryURL = "https://ws.audioscrobbler.com/2.0/";
 var songTitle;
 var artist;
 var album;
@@ -68,7 +68,7 @@ function artistInputButtons(){
 //Last.FM API call put into functions
 //function to search artist
 function searchArtist(artist){
-    var searchArtistQueryURL = `${queryURL}?method=artist.search&artist=${artist}&api_key=${apiKey}&format=json`;
+    var searchArtistQueryURL = `${lastFmQueryURL}?method=artist.search&artist=${artist}&api_key=${lastFmApiKey}&format=json`;
 
     $.ajax({
         url: searchArtistQueryURL,
@@ -80,7 +80,7 @@ function searchArtist(artist){
 };
 //function to get artist info
 function getArtistInfo(artist){
-    var artistQueryURL = `${queryURL}?method=artist.getinfo&artist=${artist}&api_key=${apiKey}&format=json`;
+    var artistQueryURL = `${lastFmQueryURL}?method=artist.getinfo&artist=${artist}&api_key=${lastFmApiKey}&format=json`;
 
     $.ajax({
         url: artistQueryURL,
@@ -101,7 +101,7 @@ function getArtistInfo(artist){
 };
 //function to get similar artist info
 function getSimilarArtist(artist){
-    var similarArtistQueryURL = `${queryURL}?method=artist.getsimilar&artist=${artist}&api_key=${apiKey}&format=json`;
+    var similarArtistQueryURL = `${lastFmQueryURL}?method=artist.getsimilar&artist=${artist}&api_key=${lastFmApiKey}&format=json`;
 
     $.ajax({
         url: similarArtistQueryURL,
@@ -127,7 +127,7 @@ function getSimilarArtist(artist){
 };
 //function to grab top albums
 function getTopAlbums(artist){
-    var topAlbumQueryURL = `${queryURL}?method=artist.gettopalbums&artist=${artist}&api_key=${apiKey}&format=json`;
+    var topAlbumQueryURL = `${lastFmQueryURL}?method=artist.gettopalbums&artist=${artist}&api_key=${lastFmApiKey}&format=json`;
 
     $.ajax({
         url: topAlbumQueryURL,
@@ -162,7 +162,7 @@ function getTopAlbums(artist){
 
 //function get top tracks
 function getTopTracks(artist){
-    var topTrackQueryURL = `${queryURL}?method=artist.gettoptracks&artist=${artist}&api_key=${apiKey}&format=json`;
+    var topTrackQueryURL = `${lastFmQueryURL}?method=artist.gettoptracks&artist=${artist}&api_key=${lastFmApiKey}&format=json`;
 
     $.ajax({
         url: topTrackQueryURL,
@@ -196,7 +196,7 @@ function getTopTracks(artist){
 };
 //function to search for album
 function searchAlbum(album){
-    var searchAlbumQueryURL = `${queryURL}?method=album.search&album=${album}&api_key=${apiKey}&format=json`;
+    var searchAlbumQueryURL = `${lastFmQueryURL}?method=album.search&album=${album}&api_key=${lastFmApiKey}&format=json`;
 
     $.ajax({
         url: searchAlbumQueryURL,
@@ -208,7 +208,7 @@ function searchAlbum(album){
 };
 //function to get album info
 function getAlbumInfo(artist, album){
-    var albumQueryURL = `${queryURL}?method=album.getInfo&api_key=${apiKey}&artist=${artist}&album=${album}&format=json`;
+    var albumQueryURL = `${lastFmQueryURL}?method=album.getInfo&api_key=${lastFmApiKey}&artist=${artist}&album=${album}&format=json`;
 
     $.ajax({
         url: albumQueryURL,
@@ -221,7 +221,7 @@ function getAlbumInfo(artist, album){
 };
 //function to search track
 function searchTrack(songTitle){
-    var searchTrackQueryURL = `${queryURL}?method=track.search&track=${songTitle}&api_key=${apiKey}&format=json`;
+    var searchTrackQueryURL = `${lastFmQueryURL}?method=track.search&track=${songTitle}&api_key=${lastFmApiKey}&format=json`;
 
     $.ajax({
         url: searchTrackQueryURL,
@@ -233,7 +233,7 @@ function searchTrack(songTitle){
 };
 //function to pull up track info
 function getTrackInfo(songTitle, artist) {
-    var trackQueryURL = `${queryURL}?method=track.getInfo&api_key=${apiKey}&artist=${artist}&track=${songTitle}&format=json`;
+    var trackQueryURL = `${lastFmQueryURL}?method=track.getInfo&api_key=${lastFmApiKey}&artist=${artist}&track=${songTitle}&format=json`;
 
     $.ajax({
         url: trackQueryURL,
@@ -263,7 +263,7 @@ function getTrackInfo(songTitle, artist) {
 //function to get similar track
 function getSimilarTrack(songTitle, artist){
 
-    var similarTrackQueryURL = `${queryURL}?method=track.getsimilar&artist=${artist}&track=${songTitle}&api_key=${apiKey}&format=json`;
+    var similarTrackQueryURL = `${lastFmQueryURL}?method=track.getsimilar&artist=${artist}&track=${songTitle}&api_key=${lastFmApiKey}&format=json`;
 
     $.ajax({
         url: similarTrackQueryURL,
