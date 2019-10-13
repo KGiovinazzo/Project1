@@ -14,17 +14,17 @@ $(".btn-submit").on("click", function(event){
     artist = $("#artist").val().trim();
     album = $("#album").val().trim();
 
-    if (songTitle != "" && artist != ""){
+    if(songTitle != "" && artist != ""){
         //function to call the track
         getTrackInfo(songTitle, artist);
-    } else if (artist != "" && album != ""){
+    } else if(artist != "" && album != ""){
         //function to pull up album info
         getAlbumInfo(artist, album);
     };
 
 });
 //click event for artist info button
-$("#artistInfo").on("click", function(event){
+$("#artistInfoBtn").on("click", function(event){
     console.log(artist);
 
     $("#displayArea").empty();
@@ -32,7 +32,7 @@ $("#artistInfo").on("click", function(event){
     getArtistInfo(artist);
 });
 //click event for similar artists button
-$("#similarArtist").on("click", function(event){
+$("#similarArtistBtn").on("click", function(event){
     console.log(artist);
 
     $("#displayArea").empty();
@@ -41,7 +41,7 @@ $("#similarArtist").on("click", function(event){
     getSimilarArtist(artist);
 });
 //click event for top albums
-$("#topAlbums").on("click", function(event){
+$("#topAlbumsBtn").on("click", function(event){
     console.log(artist);
 
     $("#displayArea").empty();
@@ -120,7 +120,7 @@ function getSimilarArtist(artist){
     }).then(function(response){
         console.log(response);
 
-        for (i = 0; i < 6; i++){
+        for(i = 0; i < 6; i++){
             var similarArtistCard = `<div class="col-sm">
                 <div class="card m-3">
                     <h5 class="card-header text-center">${i + 1}</h5>
@@ -150,13 +150,28 @@ function getTopAlbums(artist){
         console.log(response);
         console.log(response.topalbums["@attr"].artist);
         
-        var topAlbumCard = `<div class="card">
-            <h5 class="card-header">${response.topalbums["@attr"].artist}</h5>
+        var topAlbumCard = `<div class="card flex-fill">
+            <h5 class="card-header text-center">${response.topalbums["@attr"].artist}</h5>
             <div class="card-body">
+            <div class="row" id="topAlbums"></div>
             </div>
-        </div>`
+        </div>`;
 
         $("#displayArea").html(topAlbumCard);
+
+        for(i = 0; i < 6; i++){
+            var eachAlbumCard = `<div class="col-sm">
+                <div class="card m-3">
+                    <h5 class="card-header text-center">${i + 1}</h5>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${response.topalbums.album[i].name}</h5>
+                        <a href="${response.topalbums.album[i].url}">Learn more</a>
+                    </div>
+                </div>
+            </div>`
+
+            $("#topAlbums").append(eachAlbumCard);
+        };
 
     });
 
