@@ -23,7 +23,8 @@ $(".btn-submit").on("click", function(event){
     } else if(artist != ""){
         //function to generate buttons for artist only input
         searchArtist(artist);
-        artistInputButtons();
+        mainDisplayCard();
+        getArtistInfo(artist);
     } else if(album != ""){
         searchAlbum(album);
     };
@@ -37,7 +38,6 @@ $(document).on("click", "#artistInfoBtn", function(event){
 //click event for similar artists button
 $(document).on("click", "#similarArtistBtn", function(event){
     $("#displayArea").empty();
-    $("#displayArea").html(`<div class="row d-flex justify-content-around" id="displaySimilarArtist"></div>`);
 
     getSimilarArtist(artist);
 });
@@ -53,7 +53,34 @@ $(document).on("click", "#topTracksBtn", function(event){
 
     getTopTracks(artist);
 });
+//function to make main display card when submit button is clicked
+function mainDisplayCard(){
+    var mainCard = `<div class="card text-center m-5">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" id="artistInfoBtn">Summary</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="similarArtistBtn">Similar Artist</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="topAlbumsBtn">Top Albums</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="topTracksBtn">Top Tracks</a>
+            </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center" id="displayArea">
+            </div>
+        </div>
+    </div>`;
 
+    $("#mainDisplay").html(mainCard);
+
+};
 //function to generate button when only artist is input
 function artistInputButtons(){
     var artistButtonSet = `<button type="button" class="btn btn-primary" id="artistInfoBtn">Artist Info</button>
@@ -88,9 +115,9 @@ function getArtistInfo(artist){
         dataType: "jsonp"
     }).then(function(response){
         var artistDisplay = `<div class="card m-5">
-            <div class="card-header text-center">Summary</div>
+            <h5 class="card-header text-center">${response.artist.name}</h5>
             <div class="card-body">
-                <h5 class="card-title text-center m-3">${response.artist.name}</h5>
+                <h5 class="card-title text-center m-3">Summary</h5>
                 <p class="card-text m-5">${response.artist.bio.summary}</p>
             </div>
         </div>`;
@@ -108,6 +135,17 @@ function getSimilarArtist(artist){
         method: "GET",
         dataType: "jsonp"
     }).then(function(response){
+        console.log(response);
+        console.log(response.similarartists["@attr"].artist);
+        var similarArtistHeadCard = `<div class="card flex-fill m-5">
+            <h5 class="card-header text-center">${response.similarartists["@attr"].artist}</h5>
+            <div class="card-body">
+            <div class="card-columns" id="displaySimilarArtist"></div>
+            </div>
+        </div>`;
+
+        $("#displayArea").html(similarArtistHeadCard);
+
         for(i = 0; i < 6; i++){
             var similarArtistCard = `<div class="col-sm">
                 <div class="card m-3">
@@ -134,10 +172,10 @@ function getTopAlbums(artist){
         method: "GET",
         dataType: "jsonp"
     }).then(function(response){
-        var topAlbumCard = `<div class="card flex-fill">
+        var topAlbumCard = `<div class="card flex-fill m-5">
             <h5 class="card-header text-center">${response.topalbums["@attr"].artist}</h5>
             <div class="card-body">
-            <div class="row" id="topAlbums"></div>
+            <div class="card-columns" id="topAlbums"></div>
             </div>
         </div>`;
 
@@ -169,10 +207,10 @@ function getTopTracks(artist){
         method: "GET",
         dataType: "jsonp"
     }).then(function(response){
-        var topTrackCard = `<div class="card flex-fill">
+        var topTrackCard = `<div class="card flex-fill m-5">
             <h5 class="card-header text-center">${response.toptracks["@attr"].artist}</h5>
             <div class="card-body">
-            <div class="row" id="topTracks"></div>
+            <div class="card-columns" id="topTracks"></div>
             </div>
         </div>`;
 
