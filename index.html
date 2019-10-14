@@ -9,29 +9,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/canvas.css">
-    <title>Project One</title>
+    <title>Speaker Freaks</title>
 </head>
-<style>
-    /* body {
-        background-image: url("assets/css/lavaimg.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-    } */
-</style>
 
 <body>
+
     <canvas id=c></canvas>
 
     <div class="jumbotron jumbotron-fluid text-center" id="header">
-        <!-- <div class="row"> -->
-        <img src="assets/css/Speaker Freaks.png" id="imghead" class="mt-n5">
-        <!-- </div> -->
+        <img src="assets/images/Speaker Freaks.png" id="imghead" class="mt-n5">
     </div>
 
     <div class="container">
         <form>
             <div class="row">
-                <div class="form-group col-6 text-center">
+                <div class="form-group col text-center">
                     <input type="name" class="form-control text-center" id="songTitle" placeholder="Enter song title">
                 </div>
                 <div class="form-group col text-center">
@@ -46,7 +38,7 @@
             </div>
         </form>
 
-        <div class="jumbotron mt-5" id="displayArea">
+        <div id="mainDisplay">
         </div>
     </div>
 
@@ -54,10 +46,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="assets/javascript/app2.js"></script>
-    <script src="assets/javascript/lyric.js"></script>
+    <script src="assets/javascript/last-fm-api.js"></script>
+    <script src="assets/javascript/musixmatch-api.js"></script>
+    <script src="assets/javascript/happi-dev-api.js"></script>
     <script src="assets/javascript/canvas.js"></script>
-    <script src="assets/javascript/event.js"></script>
+    <!-- <script src="assets/javascript/event.js"></script> -->
 
 
 </body>
