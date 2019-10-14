@@ -1,5 +1,5 @@
 // Lyric API
-var queryURL = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP"
+var queryURL = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP"
 var apiKey = "1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP"
 
 
@@ -44,7 +44,7 @@ function getEvents(page) {
   
   $.ajax({
     type:"GET",
-    url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP="+page,
+    url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP="+page,
     async:true,
     dataType: "json",
     success: function(json) {
@@ -95,7 +95,7 @@ $("#next").click(function() {
 function getAttraction(id) {
   $.ajax({
     type:"GET",
-    url:"https://app.ticketmaster.com/discovery/v2/attractions/"+id+".json?apikey=Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP",
+    url:"https://app.ticketmaster.com/discovery/v2/attractions/"+id+".json?apikey=1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP",
     async:true,
     dataType: "json",
     success: function(json) {

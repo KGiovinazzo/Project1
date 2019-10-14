@@ -120,7 +120,7 @@ function getArtistInfo(artist){
     });
 
 };
-
+ 
 function getSimilarTrack(songTitle, artist){
 
     similarTrackQueryURL = `${queryURL}?method=track.getsimilar&artist=${artist}&track=${songTitle}&api_key=${apiKey}&format=json`;

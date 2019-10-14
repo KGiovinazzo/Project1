@@ -1,5 +1,6 @@
 #header {
     background-color: black;
+    opacity: 0.9;
     height: 250px;
 }
 
@@ -8,11 +9,9 @@
     width: 400px;
 }
 
-#displayArea {
-    background-color: black;
+#mainDisplay {
     font-style: italic;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
 }
 
 #sub {
