@@ -1,6 +1,7 @@
 // Lyric API
-var queryURL = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP"
 var apiKey = "1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP"
+var queryURL = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP"
+
 
 
 //click function
@@ -14,7 +15,9 @@ $(".btn-submit").on("click", function(event)
 	var album = $("#album").val().trim();
 	console.log(songTitle);
 	console.log(artist);
-	console.log(album);
+   console.log(album);
+   
+   getAlbumInfo(artist);
 })
 
 // Ajax
@@ -42,20 +45,44 @@ function getEvents(page) {
     }
   }
   
-  $.ajax({
-    type:"GET",
-    url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP="+page,
-    async:true,
-    dataType: "json",
-    success: function(json) {
-          getEvents.json = json;
-  			  showEvents(json);
-  		   },
-    error: function(xhr, status, err) {
-  			  console.log(err);
-  		   }
-  });
+
+
+};
+
+  function getAlbumInfo(artist){
+    console.log(artist);
+   var albumQueryURL = "https://app.ticketmaster.com/discovery/v2/events.json?keyword="+artist+"&apikey=Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP";
+
+   $.ajax({
+       url: albumQueryURL,
+       method: "GET",
+       async:true,
+       dataType: "json"
+   }).then(function(response){
+       console.log(response);
+
+   });
+
 }
+
+getAlbumInfo("Eminem");
+
+
+
+//   $.ajax({
+//     type:"GET",
+//     url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP="+page,
+//     async:true,
+//     dataType: "json",
+//     success: function(json) {
+//           getEvents.json = json;
+//   			  showEvents(json);
+//   		   },
+//     error: function(xhr, status, err) {
+//   			  console.log(err);
+//   		   }
+//   });
+
 
 function showEvents(json) {
   var items = $("#events .list-group-item");
@@ -95,7 +122,7 @@ $("#next").click(function() {
 function getAttraction(id) {
   $.ajax({
     type:"GET",
-    url:"https://app.ticketmaster.com/discovery/v2/attractions/"+id+".json?apikey=1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP",
+    url:"https://app.ticketmaster.com/discovery/v2/attractions/"+id+".json?apikey=Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP",
     async:true,
     dataType: "json",
     success: function(json) {
@@ -120,4 +147,4 @@ function showAttraction(json) {
   $("#classification").text(json.classifications[0].segment.name + " - " + json.classifications[0].genre.name + " - " + json.classifications[0].subGenre.name);
 }
 
-getEvents(page);
+//getEvents(page);
