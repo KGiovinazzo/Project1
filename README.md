@@ -21,4 +21,11 @@ Speaker Freaks gives you the opportunity to find related artists to your favorit
 
 # # # How users can get started
 
-Users simply pull up our site and enter 2 out of 3 of the forms: Song Title, Artist and/or Album. From there, the song of their choice will appear along with the related albums and 
+Users simply pull up our site and enter 1 of 3 forms: Song Title, Artist and/or Album. From there, the song of their choice will appear along with the related albums and artists. 
+
+# # # Where can users get help?
+
+Google. Google. Google. We found multiple online resources that helped guide us through the scenarios we had trouble figuring out. 
+
+# # # Who maintains and contributes to the project?
+

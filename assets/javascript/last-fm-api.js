@@ -55,25 +55,25 @@ $(document).on("click", "#topTracksBtn", function(event){
 });
 //function to make main display card when submit button is clicked
 function mainDisplayCard(){
-    var mainCard = `<div class="card text-center m-5">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-                <a class="nav-link" id="artistInfoBtn">Summary</a>
+    var mainCard = `<div class="card text-center m-5 cbod lettering">
+        <div class="card-header cbod justify-content-center">
+            <ul class="nav nav-tabs card-header-tabs cbod">
+            <li class="nav-item cbod">
+                <a class="nav-link cbod" id="artistInfoBtn">Summary</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="similarArtistBtn">Similar Artist</a>
+            <li class="nav-item cbod">
+                <a class="nav-link cbod" id="similarArtistBtn">Similar Artist</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="topAlbumsBtn">Top Albums</a>
+            <li class="nav-item cbod">
+                <a class="nav-link cbod" id="topAlbumsBtn">Top Albums</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="topTracksBtn">Top Tracks</a>
+            <li class="nav-item cbod">
+                <a class="nav-link cbod" id="topTracksBtn">Top Tracks</a>
             </li>
             </ul>
         </div>
-        <div class="card-body">
-            <div class="row justify-content-center" id="displayArea">
+        <div class="card-body cbod">
+            <div class="row justify-content-center cbod" id="displayArea">
             </div>
         </div>
     </div>`;
@@ -114,11 +114,11 @@ function getArtistInfo(artist){
         method: "GET",
         dataType: "jsonp"
     }).then(function(response){
-        var artistDisplay = `<div class="card m-5">
-            <h5 class="card-header text-center">${response.artist.name}</h5>
-            <div class="card-body">
-                <h5 class="card-title text-center m-3">Summary</h5>
-                <p class="card-text m-5">${response.artist.bio.summary}</p>
+        var artistDisplay = `<div class="card m-5 cbod lettering">
+            <h5 class="card-header text-center fontWhite lettering">${response.artist.name}</h5>
+            <div class="card-body fontWhite lettering">
+                <h5 class="card-title text-center m-3 lettering">Summary</h5>
+                <p class="card-text m-5 fontWhite">${response.artist.bio.summary}</p>
             </div>
         </div>`;
 
@@ -137,8 +137,8 @@ function getSimilarArtist(artist){
     }).then(function(response){
         console.log(response);
         console.log(response.similarartists["@attr"].artist);
-        var similarArtistHeadCard = `<div class="card flex-fill m-5">
-            <h5 class="card-header text-center">${response.similarartists["@attr"].artist}</h5>
+        var similarArtistHeadCard = `<div class="card flex-fill m-5 cbod lettering">
+            <h5 class="card-header text-center fontWhite">${response.similarartists["@attr"].artist}</h5>
             <div class="card-body">
             <div class="card-columns" id="displaySimilarArtist"></div>
             </div>
@@ -172,8 +172,8 @@ function getTopAlbums(artist){
         method: "GET",
         dataType: "jsonp"
     }).then(function(response){
-        var topAlbumCard = `<div class="card flex-fill m-5">
-            <h5 class="card-header text-center">${response.topalbums["@attr"].artist}</h5>
+        var topAlbumCard = `<div class="card flex-fill m-5 cbod lettering">
+            <h5 class="card-header text-center fontWhite">${response.topalbums["@attr"].artist}</h5>
             <div class="card-body">
             <div class="card-columns" id="topAlbums"></div>
             </div>
@@ -207,8 +207,8 @@ function getTopTracks(artist){
         method: "GET",
         dataType: "jsonp"
     }).then(function(response){
-        var topTrackCard = `<div class="card flex-fill m-5">
-            <h5 class="card-header text-center">${response.toptracks["@attr"].artist}</h5>
+        var topTrackCard = `<div class="card flex-fill m-5 cbod lettering">
+            <h5 class="card-header text-center fontWhite">${response.toptracks["@attr"].artist}</h5>
             <div class="card-body">
             <div class="card-columns" id="topTracks"></div>
             </div>
