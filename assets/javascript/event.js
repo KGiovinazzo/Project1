@@ -1,4 +1,4 @@
-// Lyric API
+// News API
 var newsQueryURL = "https://newsapi.org/v2/everything?"
 var newsApiKey = "6203d5d89e5d45e7896935c6530722d5"
 
