@@ -1,6 +1,5 @@
 #header {
     background-color: black;
-    opacity: 0.9;
     height: 250px;
 }
 
@@ -10,8 +9,19 @@
 }
 
 #mainDisplay {
+    background-color: transparent;
+}
+
+.cbod {
+    background-color: transparent;
+}
+
+#displayArea { 
+    background-color: transparent;
     font-style: italic;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* opacity: 0.8; */
+    
 }
 
 #sub {
@@ -43,13 +53,37 @@
 }
 
 #cardBody {
-    background-color: green;
+    background-color: transparent;
 }
 
 #cardCenter {
-    background-color:orange;
+    background-color: transparent;
 }
 
 #cardCol {
-    background-color: #b011ff
+    background-color: transparent
 }
+
+#cardHeader {
+    background-color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+#artistInfoBtn, #similarArtistBtn, #topAlbumsBtn, #topTracksBtn {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #4e043c;
+    opacity: 0.8;
+    color: white;
+}
+
+.fontWhite {
+    color: white;
+    font-size: 25px;
+}
+
+.lettering {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}
+
