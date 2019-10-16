@@ -1,6 +1,6 @@
-// Lyric API
-var queryURL = "https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP"
-var apiKey = "1Q0Mb6PeaHgQwJvNGEgAG3EvgZNbvV8PP"
+// News API
+var newsQueryURL = "https://newsapi.org/v2/everything?"
+var newsApiKey = "6203d5d89e5d45e7896935c6530722d5"
 
 
 //click function
@@ -15,11 +15,22 @@ $(".btn-submit").on("click", function(event)
 	console.log(songTitle);
 	console.log(artist);
 	console.log(album);
-})
+	findNews(artist);
 
+})
+ 
 // Ajax
-$.ajax(	{
-	url: queryURL,
+function findNews(artist){
+
+	var findNewsQueryUrl = `${newsQueryURL}q=${artist}&apikey=${newsApiKey}`;
+
+	$.ajax(	{
+	url: findNewsQueryUrl,
 	method: "GET",
-    dataType: "jsonp"
+	dataType: "json"
+	
+	
+}).then(function (response){
+console.log(response);
 });
+}

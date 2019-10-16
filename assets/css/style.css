@@ -70,7 +70,7 @@
 
 }
 
-#artistInfoBtn, #similarArtistBtn, #topAlbumsBtn, #topTracksBtn {
+#artistInfoBtn, #similarArtistBtn, #topAlbumsBtn, #topTracksBtn, #eventsBtn {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: #4e043c;
     opacity: 0.8;
