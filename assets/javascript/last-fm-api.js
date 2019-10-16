@@ -105,6 +105,9 @@ function mainArtistCard(){
             <li class="nav-item cbod">
                 <a class="nav-link cbod" id="topTracksBtn">Top Tracks</a>
             </li>
+            <li class="nav-item cbod">
+                <a class="nav-link cbod" id="eventsBtn">Events</a>
+            </li>
             </ul>
         </div>
         <div class="card-body cbod">
