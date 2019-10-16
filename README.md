@@ -11,7 +11,7 @@ Who maintains and contributes to the project -->
 # # # What is Speaker Freaks?
 <br>
 
-Speaker Freaks is your one-stop platform for searching your favorite song, artist or album and immediately discovering suggested artists as well as follow along with the lyrics of the song. Ticketmaster. Lyrics. 
+Speaker Freaks is your one-stop platform for searching your favorite song, artist or album and immediately discovering suggested artists as well as follow along with the lyrics of the song. Last FM. Lyrics. 
 
 <br>
 

@@ -115,8 +115,8 @@ function getArtistInfo(artist){
         dataType: "jsonp"
     }).then(function(response){
         var artistDisplay = `<div class="card m-5 cbod lettering">
-            <h5 class="card-header text-center fontWhite lettering">${response.artist.name}</h5>
             <div class="card-body fontWhite lettering">
+            <h1 class="text-center fontWhite"><strong>${response.artist.name}</strong></h1>
                 <h5 class="card-title text-center m-3 lettering">Summary</h5>
                 <p class="card-text m-5 fontWhite">${response.artist.bio.summary}</p>
             </div>
