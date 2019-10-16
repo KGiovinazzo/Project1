@@ -5,6 +5,28 @@ var songTitle;
 var artist;
 var album;
 
+//make a click function for search
+$(".btn-search").on("click", function(event){
+    event.preventDefault();
+    console.log("click");
+    //variable to store input values
+    songTitle = $("#songTitle").val().trim();
+    artist = $("#artist").val().trim();
+    album = $("#album").val().trim();
+
+    if(artist != ""){
+        //function to generate buttons for artist only input
+        albumSearch();
+        searchArtist(artist);
+        
+        return $("#artist").val("");
+    } else if(album != ""){
+        albumSearch();
+        searchAlbum(album);
+        
+        return $("#album").val("");
+    };
+});
 //make a click function for our form submit button
 $(".btn-submit").on("click", function(event){
     event.preventDefault();
@@ -17,16 +39,25 @@ $(".btn-submit").on("click", function(event){
     if(songTitle != "" && artist != ""){
         //function to call the track
         getTrackInfo(songTitle, artist);
+
+        return $("#songTitle,#artist").val("");
     } else if(artist != "" && album != ""){
         //function to pull up album info
         getAlbumInfo(artist, album);
+
+        return $("#artist,#album").val("");
     } else if(artist != ""){
         //function to generate buttons for artist only input
-        searchArtist(artist);
         mainDisplayCard();
         getArtistInfo(artist);
+
+        return $("#artist").val("");
     } else if(album != ""){
+        albumSearch();
         searchAlbum(album);
+        
+
+        return $("#album").val("");
     };
 });
 //click event for artist info button
@@ -56,8 +87,8 @@ $(document).on("click", "#topTracksBtn", function(event){
 //function to make main display card when submit button is clicked
 function mainDisplayCard(){
     var mainCard = `<div class="card text-center m-5 cbod lettering">
-        <div class="card-header cbod justify-content-center">
-            <ul class="nav nav-tabs card-header-tabs cbod">
+        <div class="card-header cbod">
+            <ul class="nav nav-tabs card-header-tabs cbod justify-content-center">
             <li class="nav-item cbod">
                 <a class="nav-link cbod" id="artistInfoBtn">Summary</a>
             </li>
@@ -81,6 +112,17 @@ function mainDisplayCard(){
     $("#mainDisplay").html(mainCard);
 
 };
+//function to make album search card
+function albumSearch(){
+    var albumSearchCard = `<div class="card text-center m-5 cbod lettering">
+        <div class="card-body cbod">
+            <div class="justify-content-center cbod" id="displayArea">
+            </div>
+        </div>    
+    </div>`;
+
+    $("#mainDisplay").html(albumSearchCard);
+};
 //function to generate button when only artist is input
 function artistInputButtons(){
     var artistButtonSet = `<button type="button" class="btn btn-primary" id="artistInfoBtn">Artist Info</button>
@@ -91,7 +133,6 @@ function artistInputButtons(){
 
     $("#buttonRow").html(artistButtonSet);
 };
-
 //Last.FM API call put into functions
 //function to search artist
 function searchArtist(artist){
@@ -103,6 +144,29 @@ function searchArtist(artist){
         dataType: "jsonp"
     }).then(function(response){
         console.log(response);
+        var listSearchArtist = `<div class="card flex-fill m-5 cbod lettering">
+            <h5 class="card-header text-center fontWhite">Possible artists named: "${response.results["@attr"].for}"</h5>
+            <div class="card-body">
+            <div class="card-columns" id="searchArtist"></div>
+        </div>
+    </div>`;
+
+    $("#displayArea").html(listSearchArtist);
+
+    for(i = 0; i < 9; i++){
+        var eachArtistSearchCard = `<div class="col-sm">
+            <div class="card m-3">
+                <h5 class="card-header text-center">${i + 1}</h5>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Artist: "${response.results.artistmatches.artist[i].name}"</h5>
+                    <a href="${response.results.artistmatches.artist[i].url}">Learn more</a>
+                </div>
+            </div>
+        </div>`;
+
+        $("#searchArtist").append(eachArtistSearchCard);
+        
+        };
     });
 };
 //function to get artist info
@@ -242,6 +306,31 @@ function searchAlbum(album){
         dataType: "jsonp"
     }).then(function(response){
         console.log(response);
+        console.log(response.results["@attr"]);
+        var listSearchAlbums = `<div class="card flex-fill m-5 cbod lettering">
+            <h5 class="card-header text-center fontWhite">Possible albums with title: "${response.results["@attr"].for}"</h5>
+            <div class="card-body">
+            <div class="card-columns" id="searchAlbums"></div>
+        </div>
+    </div>`;
+
+    $("#displayArea").html(listSearchAlbums);
+
+    for(i = 0; i < 9; i++){
+        var eachAlbumSearchCard = `<div class="col-sm">
+            <div class="card m-3">
+                <h5 class="card-header text-center">${i + 1}</h5>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Album Title: "${response.results.albummatches.album[i].name}"</h5>
+                    <p class="card-text text-center">Artist: "${response.results.albummatches.album[i].artist}"</p>
+                    <a href="${response.results.albummatches.album[i].url}">Learn more</a>
+                </div>
+            </div>
+        </div>`;
+
+        $("#searchAlbums").append(eachAlbumSearchCard);
+        
+        };
     });
 };
 //function to get album info
@@ -312,42 +401,3 @@ function getSimilarTrack(songTitle, artist){
 
     });
 };
-
-//Dan's code section
-// if (key === "artist") {
-            //     $("#albumPic").attr("src", response.artist.image[3]["#text"]);
-            //     $("#albumPic").wrap($("<a>", {href: response.artist.url}));
-            //     $("#artistDisplay").html(response.artist.name);
-            // }
-            // else if (key === "album") {
-            //     $("#albumPic").attr("src", response.album.image[3]["#text"]);
-            //     $("#albumPic").wrap($("<a>", {href: response.album.url}));
-            //     $("#artistDisplay").html(response.album.artist);
-            //     $("#albumDisplay").html(response.album.name);
-            // }
-            // else if (key === "song") {
-            //     $("#albumPic").attr("src", response.track.album.image[3]["#text"]);
-            //     $("#albumPic").wrap($("<a>", {href: response.track.artist.url}));
-            //     $("#songTitleDisplay").html(response.track.name);
-            //     $("#artistDisplay").html(response.track.artist.name);
-            // }
-            // else if (key === "similarArtists") {
-            //     $("#artist1Pic").attr("src", response.similarartists.artist[0].image[2]["#text"]);
-            //     $("#artist1Pic").wrap($("<a>", {href: response.similarartists.artist[0].url}));
-            //     $("#similarArtist1").html(response.similarartists.artist[0].name);
-            //     $("#artist2Pic").attr("src", response.similarartists.artist[1].image[2]["#text"]);
-            //     $("#artist2Pic").wrap($("<a>", {href: response.similarartists.artist[1].url}));
-            //     $("#similarArtist2").html(response.similarartists.artist[1].name);
-            //     $("#artist3Pic").attr("src", response.similarartists.artist[2].image[2]["#text"]);
-            //     $("#artist3Pic").wrap($("<a>", {href: response.similarartists.artist[3].url}));
-            //     $("#similarArtist3").html(response.similarartists.artist[2].name);
-            // }
-            //$("#artist1Pic").attr("src", response.similartracks.track[0].image[2]["#text"]);
-            //$("#artist1Pic").wrap($("<a>", {href: response.similartracks.track[0].url}));
-            //$("#similarArtist1").html(response.similartracks.track[0].name);
-            //$("#artist2Pic").attr("src", response.similartracks.track[1].image[2]["#text"]);
-            //$("#artist2Pic").wrap($("<a>", {href: response.similartracks.track[1].url}));
-            //$("#similarArtist2").html(response.similartracks.track[1].name);
-            //$("#artist3Pic").attr("src", response.similartracks.track[2].image[2]["#text"]);
-            //$("#artist3Pic").wrap($("<a>", {href: response.similartracks.track[3].url}));
-            //$("#similarArtist3").html(response.similartracks.track[2].name);
